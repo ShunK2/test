@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>記憶ゲーム</title>
+    <style>
+        .number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>記憶ゲーム</h1>
+    <div id="gameBoard"></div>
+    <button onclick="startGame()">ゲーム開始</button>
+    <p id="message"></p>
+
+    <script>
+        let sequence = [];
+        let playerSequence = [];
+        let level = 1;
+
+        function startGame() {
+            sequence = [];
+            playerSequence = [];
+            level = 1;
+            nextLevel();
+        }
+
+        function nextLevel() {
+            let newNumber = Math.floor(Math.random() * 9) + 1;
+            sequence.push(newNumber);
+            showSequence();
+        }
+
+        function showSequence() {
+            let i = 0;
+            let intervalId = setInterval(() => {
+                if (i < sequence.length) {
+                    highlightNumber(sequence[i]);
+                    i++;
+                } else {
+                    clearInterval(intervalId);
+                    document.getElementById('message').innerHTML = '順番通りにクリックしてください';
+                }
+            }, 1000);
+        }
+
+        function highlightNumber(number) {
+            let element = document.getElementById(`number${number}`);
+            element.style.backgroundColor = 'yellow';
+            setTimeout(() => {
+                element.style.backgroundColor = '#ddd';
+            }, 500);
+        }
+
+        function checkNumber(number) {
+            playerSequence.push(number);
+            if (playerSequence[playerSequence.length - 1] !== sequence[playerSequence.length - 1]) {
+                document.getElementById('message').innerHTML = 'ゲームオーバー！もう一度挑戦してください。';
+                return;
+            }
+            if (playerSequence.length === sequence.length) {
+                level++;
+                playerSequence = [];
+                document.getElementById('message').innerHTML = `レベル${level-1}クリア！`;
+                setTimeout(nextLevel, 1000);
+            }
+        }
+
+        // ゲームボードの作成
+        let gameBoard = document.getElementById('gameBoard');
+        for (let i = 1; i <= 9; i++) {
+            let numberDiv = document.createElement('div');
+            numberDiv.className = 'number';
+            numberDiv.id = `number${i}`;
+            numberDiv.innerHTML = i;
+            numberDiv.onclick = () => checkNumber(i);
+            gameBoard.appendChild(numberDiv);
+        }
+    </script>
+</body>
+</html>
