@@ -1,5 +1,5 @@
 # 開発者ツールのコード
-'''python
+'''
 def hello_world():
     print("Hello, GitHub!")document.body.onmousemove = function(e) {
   var d = document.createElement('div');
