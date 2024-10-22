@@ -1,4 +1,4 @@
-# 開発者ツールのコード
+# 開発者ツールのコード(これをコピーしてconsoleに貼り付けてください)
 ```
 document.body.onmousemove = function(e) {
   var d = document.createElement('div');
