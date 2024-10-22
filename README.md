@@ -1,5 +1,5 @@
 # 開発者ツールのコード
-'''
+```
 def hello_world():
     print("Hello, GitHub!")document.body.onmousemove = function(e) {
   var d = document.createElement('div');
@@ -14,4 +14,4 @@ def hello_world():
   document.body.appendChild(d);
   setTimeout(() => d.remove(), 1000);
 };
-'''
+```
