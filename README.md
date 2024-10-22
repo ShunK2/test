@@ -1,7 +1,6 @@
 # 開発者ツールのコード
 ```
-def hello_world():
-    print("Hello, GitHub!")document.body.onmousemove = function(e) {
+document.body.onmousemove = function(e) {
   var d = document.createElement('div');
   d.style.cssText = `
     position:absolute;
