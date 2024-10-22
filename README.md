@@ -1,7 +1,6 @@
-# google chromeを開いて、右クリックして一番下の検証をクリック
-![Uploading スクリーンショット 2024-10-22 125324.png…]()
+## google chromeを開いて、右クリックして一番下の検証をクリック
 
-# プログラミングのソースコード
+## プログラミングのソースコード
 (これをコピーしてconsoleに貼り付けてください)
 ```
 document.body.onmousemove = function(e) {
